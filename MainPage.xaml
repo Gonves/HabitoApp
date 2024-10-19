@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HabitoApp.MainPage">
+
+
+    <ScrollView>
+
+        <StackLayout Padding="10" >
+            <Label Text="Minha Rotina" FontSize="Large" HorizontalOptions="Center" Padding="10" TextColor="MediumPurple"/>
+            <Label Text="Digite suas tarefas" Padding="5"/>
+            <Entry x:Name="HabitNameEntry" Placeholder="Ir para academia" />
+            <Label Text="Digite a frequência da sua tarefa:" Padding="5"/>
+
+            <Entry x:Name="HabitFrequencyEntry" Placeholder="5x na semana" Keyboard="Numeric" />
+
+            <Button Text="Adicionar Hábito" WidthRequest="200" Margin="190,10,0,0" Clicked="OnAddHabitClicked" BackgroundColor="MediumPurple"/>
+
+
+            <ListView x:Name="HabitsList" ItemsSource="{Binding Habits}"  Margin="0,20,0,0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+
+                            <StackLayout Padding="1" Orientation="Horizontal">
+
+                                <StackLayout Padding="5" >
+                                    <Label Text= "{Binding Nome}" TextColor="Purple" />
+
+                                    <Label Text= "{Binding Frequencia}" />
+                                </StackLayout>
+
+
+                                <Button 
+                                    TextColor="White"
+                                    CornerRadius="100"
+                                    Margin="160,10,10,10"
+                                    Clicked="OnCompleteHabitClicked"
+                                    FontSize="10"
+                                    BackgroundColor="Blue"
+                                    Text="CONCLUIDO"
+                                    
+                                    HeightRequest="35"/>
+
+                                <Button Text="REMOVER"
+                                     TextColor="White"
+                                     CornerRadius="100" 
+                                     Margin="10,10,10,10"
+                                     Clicked="OnRemoveHabitClicked"
+                                     FontSize="10"
+                                     BackgroundColor="Red"
+                                   
+                                     HeightRequest="35"/>
+
+                            </StackLayout>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
